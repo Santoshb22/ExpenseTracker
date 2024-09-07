@@ -1,0 +1,28 @@
+.controller {
+    width: 85px;
+    height: 25px;
+    margin: 5px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+p {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+}
+
+.minimize {
+    background-color: #48A14D;
+    
+}
+
+.zoomInOut {
+   background-color: #F4BB4A;
+}
+
+.close {
+    background-color: #CC2323;
+}
