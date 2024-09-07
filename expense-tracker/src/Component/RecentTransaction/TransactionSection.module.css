@@ -63,3 +63,11 @@
     background-color: #F4BB4A;
     border-radius: 100%;
 }
+
+.amount {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21.79px;
+    color: #F4BB4A;
+}

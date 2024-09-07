@@ -1,0 +1,80 @@
+.modalOverlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .expenseModal {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 538px;
+    width: 100%;
+    max-height: 335px;
+    position: relative;
+  }
+  
+  .modalTitle {
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34.47px;
+  }
+  
+  .modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modalInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .modalButtons {
+    display: flex; 
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .addExpenseButton {
+    background-color: #F4BB4A;  /* Yellow for Add Expense */
+    font-family: Open Sans
+    ;font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 21.79px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    height: 51px;
+    width: 223px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cancelButton {
+   cursor: pointer;
+   background-color: #E3E3E3;
+   font-family: Open Sans;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 21.79px;
+   box-shadow: 0px 4px 4px 0px #00000040;
+   height: 51px;
+   border: none;
+   width: 112px;
+   border-radius: 15px;
+  }
+  
+  .addExpenseButton:hover, .cancelButton:hover {
+    opacity: 0.8;
+  }
+  
