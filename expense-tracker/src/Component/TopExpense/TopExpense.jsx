@@ -6,7 +6,7 @@ const TopExpense = ({data}) => {
   return (
     <div className={Styles.topExpenses}>
       {
-        !data || data.length === 0? <h1 className={Styles.noExpense}>First add Expenses </h1>
+        !data || data.length === 0? <h1 className={Styles.noExpense}>Do expense to see top expenses</h1>
         : (
           <ResponsiveContainer >
             <BarChart

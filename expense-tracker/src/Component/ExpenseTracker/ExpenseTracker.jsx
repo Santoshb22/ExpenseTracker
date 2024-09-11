@@ -1,3 +1,4 @@
+// ExpenseTracker.jsx
 import React, { useEffect, useState } from 'react';
 import Styles from "./ExpenseTracker.module.css";
 import WindowController from '../WindowController/WindowController.jsx';
@@ -8,7 +9,7 @@ import RecentTransaction from '../RecentTransaction/RecentTransaction.jsx';
 import ModalComponent from '../Modal/ModalComponent.jsx';
 
 const ExpenseTracker = () => {
-  const [data, setData] = useState({expenses: [], balance: 0, totalExpense: 0});
+  const [data, setData] = useState({ expenses: [], balance: 5000, totalExpense: 0 });
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
   const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -22,7 +23,7 @@ const ExpenseTracker = () => {
   });
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("data")) || {expenses: [], balance: 0, totalExpense: 0};
+    const storedData = JSON.parse(localStorage.getItem("data")) || { expenses: [], balance: 5000, totalExpense: 0 };
     setData(storedData);
   }, []);
 
@@ -50,10 +51,10 @@ const ExpenseTracker = () => {
   const closeEditModal = () => setIsEditModalOpen(false);
 
   function handleInputChange(e) {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFormData(prevValues => ({
       ...prevValues,
-      [name] : value
+      [name]: value
     }));
   }
 
@@ -117,6 +118,30 @@ const ExpenseTracker = () => {
     });
   };
 
+
+  const calculateCategoryTotals = () => {
+    const totals = {
+      Food: 0,
+      Entertainment: 0,
+      Travel: 0
+    };
+    
+    data.expenses.forEach(expense => {
+      if (totals[expense.category] !== undefined) {
+        totals[expense.category] += expense.amount;
+      }
+    });
+
+    return Object.keys(totals).map(category => ({
+      name: category,
+      value: totals[category]
+    }));
+  };
+
+  const categoryData = calculateCategoryTotals();
+
+
+
   return (
     <div>
       <WindowController />
@@ -130,7 +155,8 @@ const ExpenseTracker = () => {
               <ExpenseCard title={"Expenses:"} add={"Expense"} amount={data.totalExpense} modal={openExpenseModal} />
             </div>
             <div>
-              <EllipseChart data={data.expenses.map(exp => ({ name: exp.category, value: exp.amount }))} />
+
+              <EllipseChart  data={categoryData}/>
               <div className={Styles.chartGuide}>
                 <div>
                   <span className={Styles.purple}></span>Food
@@ -153,12 +179,13 @@ const ExpenseTracker = () => {
 
             <div className={Styles.rightSection}>
               <p className={Styles.totalExpense}>Top Expenses</p>
-              <TopExpense data={data.expenses.map(exp => ({ name: exp.category, value: exp.amount }))} />
+
+              <TopExpense  data={categoryData} />
             </div>
           </section>
         </div>
 
-        {/* Add Expense Modal */}
+
         <ModalComponent
           isOpen={isExpenseModalOpen}
           onRequestClose={closeExpenseModal}
@@ -179,13 +206,17 @@ const ExpenseTracker = () => {
             onChange={handleInputChange}
             value={formData.price}
           />
-          <input type="text"
-            placeholder="Select Category"
+          <select
             name="category"
             className={Styles.inputField}
             onChange={handleInputChange}
             value={formData.category}
-          />
+          >
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Travel">Travel</option>
+          </select>
           <input type="date"
             placeholder="dd/mm/yyyy"
             name="date"
@@ -232,13 +263,18 @@ const ExpenseTracker = () => {
             onChange={handleInputChange}
             value={formData.price}
           />
-          <input type="text"
-            placeholder="Select Category"
+          {/* Change: Replaced category input with a dropdown for predefined categories */}
+          <select
             name="category"
             className={Styles.inputField}
             onChange={handleInputChange}
             value={formData.category}
-          />
+          >
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Travel">Travel</option>
+          </select>
           <input type="date"
             placeholder="dd/mm/yyyy"
             name="date"

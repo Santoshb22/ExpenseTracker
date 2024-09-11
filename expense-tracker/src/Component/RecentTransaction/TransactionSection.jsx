@@ -3,15 +3,27 @@ import Styles from "./TransactionSection.module.css";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { CiCircleRemove } from "react-icons/ci";
 import travel from "../../assests/travel.png";
-
+import food from "../../assests/food.png"
+import entertainment from "../../assests/movie.png"
 const TransactionSection = ({ data, onRemove, onEdit }) => {
-  const { id, title, date, amount } = data;
+  const { id, title, date, amount, category } = data;
 
   return (
     <div className={Styles.transactions}>
       <div className={Styles.transactionType}>
         <div className={Styles.logo}>
-          <img src={travel} alt="icon" />
+              <img
+              src={
+                category === "travel"
+                  ? travel
+                  : category === "food"
+                  ? food
+                  : category === "entertainment"
+                  ? entertainment
+                  : null
+              }
+              alt="icon"
+            />
         </div>
         <div className={Styles.transactiontext}>
           <p>{title}</p>
