@@ -14,11 +14,11 @@ const TransactionSection = ({ data, onRemove, onEdit }) => {
         <div className={Styles.logo}>
               <img
               src={
-                category === "travel"
+                category === "Travel"
                   ? travel
-                  : category === "food"
+                  : category === "Food"
                   ? food
-                  : category === "entertainment"
+                  : category === "Entertainment"
                   ? entertainment
                   : null
               }
