@@ -1,21 +1,20 @@
 .chart {
-    width: 14.9375rem;
-    height: 14.9375rem;
+    width: 239px;
+    height: 239px;
     position: relative;
 }
 
 .chartContent {
     position: absolute;
-    top: -4.6875rem;
-    right: -2.5rem;
-    width: 14.9375rem;
-    height: 14.9375rem;
+    top: -75px;
+    right: -40px;
+    width: 239px;
+    height: 239px;
 }
 
 .noChart {
-    font-size: 1.875rem;
+    font-size: 30px;
     color: white;
     text-align: center;
     font-weight: 700;
 }
-

@@ -154,7 +154,7 @@ const ExpenseTracker = () => {
               <ExpenseCard title={"Wallet Balance:"} add={"Income"} amount={data.balance} modal={openIncomeModal} />
               <ExpenseCard title={"Expenses:"} add={"Expense"} amount={data.totalExpense} modal={openExpenseModal} />
             </div>
-            <div>
+            <div className={Styles.pieChart}>
 
               <EllipseChart  data={categoryData}/>
               <div className={Styles.chartGuide}>
